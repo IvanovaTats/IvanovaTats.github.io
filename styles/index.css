@@ -3,15 +3,8 @@
     width: 100%;
     padding-top: 16px!important;
     padding-bottom: 16px!important;
+    margin: 0%
 }
-
-.footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color:white;
-    text-align: right;
- }
 
 .menu {
     float: left;
@@ -25,4 +18,8 @@
 
 .right {
   width: 75%;
+}
+
+.articles{
+    display: block;
 }

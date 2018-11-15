@@ -1,16 +1,31 @@
-export function AddElements(obj, elId) {
-    let el = document.getElementById(elId);
-    let src = obj.sources;
+import ApiClient from './ApiClient.js';
+
+export function showNewElements(obj, className) {
+    let el = document.getElementById(className);
+    let src = obj[className];
     src.forEach((source) => {
-        let str = `<div class="Sources" id="${source.id}">${source.name}</div>`;
+        let str = `<div class="${className}" id="${source.id}">${source.name}</div>`;
+        el.innerHTML += str;
+    });
+    return el;
+}
+
+export function showArticles(obj, className) {
+    let el = document.getElementById(className);
+    let src = obj[className];
+    src.forEach((source) => {
+        let str = `<a href="${source.url}" class="${className}">${source.title}</a>`;
         el.innerHTML += str;
     });
 }
 
-function AddEventListenerByClassName(el, className) {
+export function addEventListenerByClassName(el, className) {
     let sources = el.getElementsByClassName(className);
     for (var i = 0; i < sources.length; i++) {
         let el = sources[i];
-        el.addEventListener("click", new ApiClient().LoadNewsBySource(el.id), false);
+        el.addEventListener("click", () => {
+            document.getElementById("articles").innerHTML = '';
+            new ApiClient().loadNewsBySource(el.id)
+        }, false);
     };
 }
