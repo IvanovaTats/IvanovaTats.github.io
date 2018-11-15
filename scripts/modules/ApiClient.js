@@ -1,41 +1,40 @@
+import apiKey from './Modules/Config.js';
+import AddElements from './Modules/Render.js';
+
 export default class ApiClient {
 
     LoadNewsBySource(source) {
-        let url = 'https://newsapi.org/v2/top-headlines?' +
-            'sources=bbc-news&' +
-            'apiKey=75f32e4838744d73b2a6392f4143f2e0';
+        let url = `https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`;
         var req = new Request(url);
         fetch(req)
-            .then(function (response) {
-                response.json().then(function (obj) {
-                    let articles = obj.articles;
-                    let ol = document.getElementById("articles");
-                    articles.forEach(article => {
-                        let li = document.createElement("li");
-                        li.appendChild(document.createTextNode(article.url));
-                        ol.appendChild(li);
-                    });
-                })
-            })
-
+            .then((response) => {
+                response.json().then((obj) => {
+                    return obj;
+                    /*let articles = obj.articles;
+                    let el = document.getElementById("articles");
+                    articles.forEach((article) => {
+                        let str = `<div class="articles" id="${article.id}">${article.name}</div>`;
+                        el.innerHTML += str;*/
+                });
+            });
     }
 
     LoadSources() {
-        var url = 'https://newsapi.org/v2/sources?apiKey=75f32e4838744d73b2a6392f4143f2e0';
+        console.log("https://newsapi.org/v2/sources?apiKey=5fb7dea8d7f440b1af9b7cd7cba9640d");
+        const url = `https://newsapi.org/v2/sources?apiKey=${apiKey}`;
         let req = new Request(url);
         fetch(req)
-            .then(function (response) {
-                response.json().then(function (obj) {
-                    let src = obj.sources;
-                    let ul = document.getElementById("sources");
-                    src.forEach(source => {
-                        console.log(source);
-                        let li = document.createElement("li",);
-                        li.appendChild(document.createTextNode(source.name));
-                        ul.appendChild(li);
+            .then((response) => {
+                response.json()
+                    .then((obj) => {
+                        let el = AddElements(obj, "sources");
+                        return el;
                     })
-                });
-            })
+                    .then((el) => {
+                        let className = "Sources";
+                        AddEventListenerByClassName(el, className);
+                    });
+            });
     }
 }
 
