@@ -21,7 +21,7 @@ export function showArticles(obj, className) {
 
 export function addEventListenerByClassName(el, className) {
     let sources = el.getElementsByClassName(className);
-    for (var i = 0; i < sources.length; i++) {
+    for (const [index, value] of sources.entries()) {
         let el = sources[i];
         el.addEventListener("click", () => {
             document.getElementById("articles").innerHTML = '';
