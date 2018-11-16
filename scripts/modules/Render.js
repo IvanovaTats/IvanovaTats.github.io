@@ -3,7 +3,7 @@ import ApiClient from './ApiClient.js';
 export function showNewElements(obj, className) {
     let el = document.getElementById(className);
     let src = obj[className];
-    src.forEach((source) => {
+    for (const source of src) {
         let str = `<div class="${className}" id="${source.id}">${source.name}</div>`;
         el.innerHTML += str;
     });
