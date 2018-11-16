@@ -13,7 +13,7 @@ export function showNewElements(obj, className) {
 export function showArticles(obj, className) {
     let el = document.getElementById(className);
     let src = obj[className];
-    src.forEach((source) => {
+    for (const source of src) {
         let str = `<a href="${source.url}" class="${className}">${source.title}</a>`;
         el.innerHTML += str;
     });
