@@ -1,4 +1,4 @@
-import ApiClient from './Modules/ApiClient.js';
+import ApiClient from './modules/ApiClient.js';
 
 let apiClient = new ApiClient();
 
