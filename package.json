@@ -12,7 +12,10 @@
     "babel-preset-env": "^1.7.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \" Running start script",
+    "build": "babel src --out-file compiled.js",
+    "watch": "babel src --watch --out-file compiled.js"
   },
   "repository": {
     "type": "git",
