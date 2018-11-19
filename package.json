@@ -4,17 +4,18 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "webpack": "^4.25.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0"
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6"
   },
   "scripts": {
     "start": "echo \" Running start script",
-    "build": "babel scripts --out-file compiled.js",
-    "watch": "babel scripts --watch --out-file compiled.js"
+    "build": "./node_modules/.bin/babel scripts --out-dir lib --presets=@babel/env",
+    "watch": "./node_modules/.bin/babel scripts --watch --out-dir lib --presets=@babel/env"
   },
   "repository": {
     "type": "git",
