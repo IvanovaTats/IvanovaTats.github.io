@@ -14,8 +14,8 @@
   },
   "scripts": {
     "start": "echo \" Running start script",
-    "build": "./node_modules/.bin/babel scripts --out-dir lib --presets=@babel/env",
-    "watch": "./node_modules/.bin/babel scripts --watch --out-dir lib --presets=@babel/env"
+    "build": "./node_modules/.bin/babel src --out-file ./dist/compiled.js",
+    "watch": "./node_modules/.bin/babel src --config ./ --watch --out-file compiled.js"
   },
   "repository": {
     "type": "git",
