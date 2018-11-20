@@ -3,7 +3,4 @@ root = true
 [*.js]
 indent_style = tab
 insert_final_newline = true
-quote_type = single
 
-[*.html]
-quote_type = double
