@@ -41,7 +41,7 @@ function showArticles({articles}) {
   const className = "articles";
   let el = document.getElementById(className);
   for (const art of articles) {
-    let str = `<a href="${art.url}" class="${className}">${art.title}</a>`;
+    let str = `<a href="${art.url}" target="_blank" class="${className}">${art.title}</a>`;
     el.innerHTML += str;
   };
 }
