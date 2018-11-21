@@ -12,8 +12,8 @@ async function generatePublishers(){
 }
 
 async function LoadSources(url) {
-  let req = new Request(url);
-  let response = fetch(req, {
+  //let req = new Request(url);
+  let response = fetch(url, {
     headers: {
       'X-Api-Key': apiKey
     }
