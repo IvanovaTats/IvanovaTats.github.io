@@ -28,23 +28,21 @@ async function loadArticles(publisher) {
   showArticles(articles);
 }
 
-function showPublishers(obj) {
+function showPublishers({sources,...rest} = obj) {
   const className = "publishers";
   let el = document.getElementById(className);
-  let src = obj.sources;
-  for (const source of src) {
+  for (const source of sources) {
     let str = `<div class="${className}" id="${source.id}">${source.name}</div>`;
     el.innerHTML += str;
   };
   return el;
 }
 
-function showArticles(obj) {
+function showArticles({articles,...rest}= obj) {
   const className = "articles";
   let el = document.getElementById(className);
-  let src = obj[className];
-  for (const source of src) {
-    let str = `<a href="${source.url}" class="${className}">${source.title}</a>`;
+  for (const art of articles) {
+    let str = `<a href="${art.url}" class="${className}">${art.title}</a>`;
     el.innerHTML += str;
   };
 }
