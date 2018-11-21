@@ -4,11 +4,19 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "webpack": "^4.25.1"
+    "@babel/polyfill": "^7.0.0",
+    "webpack": "^4.25.1",
+    "whatwg-fetch": "^3.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "echo \" Running start script",
+    "build": "./node_modules/.bin/babel src --out-file ./dist/compiled.js",
+    "watch": "./node_modules/.bin/babel src --watch --out-file ./dist/compiled.js"
   },
   "repository": {
     "type": "git",
