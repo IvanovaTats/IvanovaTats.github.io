@@ -12,8 +12,7 @@ async function generatePublishers(){
 }
 
 async function LoadSources(url) {
-  //let req = new Request(url);
-  let response = fetch(url, {
+ let response = fetch(url, {
     headers: {
       'X-Api-Key': apiKey
     }
@@ -21,14 +20,14 @@ async function LoadSources(url) {
   return response;
 }
 
-async function loadArticles(publisher) {
+const loadArticles = async(publisher) => {
   let url = `${articlesUrl}${publisher}`;
   let promise = await LoadSources(url);
   let articles = await promise.json();
   showArticles(articles);
 }
 
-function showPublishers({sources,...rest} = obj) {
+function showPublishers({sources}) {
   const className = "publishers";
   let el = document.getElementById(className);
   for (const source of sources) {
@@ -38,7 +37,7 @@ function showPublishers({sources,...rest} = obj) {
   return el;
 }
 
-function showArticles({articles,...rest}= obj) {
+function showArticles({articles}) {
   const className = "articles";
   let el = document.getElementById(className);
   for (const art of articles) {
