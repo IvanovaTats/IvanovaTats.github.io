@@ -1,71 +1,61 @@
-//import ApiClient from './modules/ApiClient.js';
-const apiKey = "5fb7dea8d7f440b1af9b7cd7cba9640d";//"75f32e4838744d73b2a6392f4143f2e0";
+const apiKey = '5fb7dea8d7f440b1af9b7cd7cba9640d';//"75f32e4838744d73b2a6392f4143f2e0";
+const publishersUrl = 'https://newsapi.org/v2/sources'
+const articlesUrl = 'https://newsapi.org/v2/top-headlines?sources='
 
-//let apiClient = new ApiClient();
+document.addEventListener('DOMContentLoaded', generatePublishers, false);
 
-document.addEventListener('DOMContentLoaded', LoadSources, false);
-
-function loadNewsBySource(source) {
-	let url = `https://newsapi.org/v2/top-headlines?sources=${source}`;
-	let req = new Request(url);
-	fetch(req, {
-		headers: {
-			'X-Api-Key': apiKey
-		}
-	})
-		.then((response) => {
-			response.json()
-				.then((obj) => {
-					showArticles(obj);
-				});
-		})
+async function generatePublishers(){
+  let promise = await LoadSources(publishersUrl);
+  let publishers = await promise.json();
+  let el = showPublishers(publishers);
+  addEventToSource(el);
 }
 
-function LoadSources() {
-	const url = `https://newsapi.org/v2/sources`;
-	let req = new Request(url);
-	fetch(req, {
-		headers: {
-			'X-Api-Key': apiKey
-		}
-	})
-		.then((response) => {
-			response.json()
-				.then((obj) => {
-					let el = showSources(obj);
-					addEventToSource(el);
-				});
-		});
+async function LoadSources(url) {
+  let req = new Request(url);
+  let response = fetch(req, {
+    headers: {
+      'X-Api-Key': apiKey
+    }
+  });
+  return response;
 }
 
-function showSources(obj) {
-	const className = "sources";
-	let el = document.getElementById(className);
-	let src = obj[className];
-	for (const source of src) {
-		let str = `<div class="${className}" id="${source.id}">${source.name}</div>`;
-		el.innerHTML += str;
-	};
-	return el;
+async function loadArticles(publisher) {
+  let url = `${articlesUrl}${publisher}`;
+  let promise = await LoadSources(url);
+  let articles = await promise.json();
+  showArticles(articles);
+}
+
+function showPublishers(obj) {
+  const className = "publishers";
+  let el = document.getElementById(className);
+  let src = obj.sources;
+  for (const source of src) {
+    let str = `<div class="${className}" id="${source.id}">${source.name}</div>`;
+    el.innerHTML += str;
+  };
+  return el;
 }
 
 function showArticles(obj) {
-	const className = "articles";
-	let el = document.getElementById(className);
-	let src = obj[className];
-	for (const source of src) {
-		let str = `<a href="${source.url}" class="${className}">${source.title}</a>`;
-		el.innerHTML += str;
-	};
+  const className = "articles";
+  let el = document.getElementById(className);
+  let src = obj[className];
+  for (const source of src) {
+    let str = `<a href="${source.url}" class="${className}">${source.title}</a>`;
+    el.innerHTML += str;
+  };
 }
 
 function addEventToSource(el) {
-	const className = "sources";
-	let sources = el.getElementsByClassName(className);
-	for (const [index, value] of Object.entries(sources)) {
-		value.addEventListener("click", () => {
-			document.getElementById("articles").innerHTML = '';
-			loadNewsBySource(value.id)
-		}, false);
-	};
+  const className = "publishers";
+  let sources = el.getElementsByClassName(className);
+  for (const [index, value] of Object.entries(sources)) {
+    value.addEventListener("click", () => {
+      document.getElementById("articles").innerHTML = '';
+      loadArticles(value.id)
+    }, false);
+  };
 }
