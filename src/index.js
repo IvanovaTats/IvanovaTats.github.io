@@ -2,14 +2,14 @@ const apiKey = '5fb7dea8d7f440b1af9b7cd7cba9640d';//"75f32e4838744d73b2a6392f414
 const publishersUrl = 'https://newsapi.org/v2/sources'
 const articlesUrl = 'https://newsapi.org/v2/top-headlines?sources='
 
-document.addEventListener('DOMContentLoaded', generatePublishers, false);
-
-async function generatePublishers(){
+const generatePublishers = async() =>{
   let promise = await LoadSources(publishersUrl);
   let publishers = await promise.json();
   let el = showPublishers(publishers);
   addEventToSource(el);
 }
+
+document.addEventListener('DOMContentLoaded', generatePublishers, false);
 
 async function LoadSources(url) {
  let response = fetch(url, {
