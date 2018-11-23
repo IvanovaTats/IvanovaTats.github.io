@@ -2,18 +2,17 @@ const apiKey = '5fb7dea8d7f440b1af9b7cd7cba9640d';//"75f32e4838744d73b2a6392f414
 const publishersUrl = 'https://newsapi.org/v2/sources'
 const articlesUrl = 'https://newsapi.org/v2/top-headlines?sources='
 
-document.addEventListener('DOMContentLoaded', generatePublishers, false);
-
-async function generatePublishers(){
+const generatePublishers = async() =>{
   let promise = await LoadSources(publishersUrl);
   let publishers = await promise.json();
   let el = showPublishers(publishers);
   addEventToSource(el);
 }
 
+document.addEventListener('DOMContentLoaded', generatePublishers, false);
+
 async function LoadSources(url) {
-  //let req = new Request(url);
-  let response = fetch(url, {
+ let response = fetch(url, {
     headers: {
       'X-Api-Key': apiKey
     }
@@ -21,14 +20,14 @@ async function LoadSources(url) {
   return response;
 }
 
-async function loadArticles(publisher) {
+const loadArticles = async(publisher) => {
   let url = `${articlesUrl}${publisher}`;
   let promise = await LoadSources(url);
   let articles = await promise.json();
   showArticles(articles);
 }
 
-function showPublishers({sources,...rest} = obj) {
+function showPublishers({sources}) {
   const className = "publishers";
   let el = document.getElementById(className);
   for (const source of sources) {
@@ -38,11 +37,11 @@ function showPublishers({sources,...rest} = obj) {
   return el;
 }
 
-function showArticles({articles,...rest}= obj) {
+function showArticles({articles}) {
   const className = "articles";
   let el = document.getElementById(className);
   for (const art of articles) {
-    let str = `<a href="${art.url}" class="${className}">${art.title}</a>`;
+    let str = `<a href="${art.url}" target="_blank" class="${className}">${art.title}</a>`;
     el.innerHTML += str;
   };
 }
