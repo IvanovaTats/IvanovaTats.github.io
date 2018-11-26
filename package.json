@@ -2,21 +2,25 @@
   "name": "ivanovatats.github.io",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "webpack": "^4.25.1",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6"
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/runtime": "^7.1.5",
+    "babel-loader": "^8.0.4",
+    "lodash": "^4.17.11",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.4"
   },
   "scripts": {
     "start": "echo \" Running start script",
-    "build": "./node_modules/.bin/babel src --out-file ./dist/compiled.js",
-    "watch": "./node_modules/.bin/babel src --watch --out-file ./dist/compiled.js"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
