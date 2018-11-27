@@ -1,7 +1,8 @@
 const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode:'development',
+  mode: 'development',
   entry: './src/index.js',
   devtool: 'inline-source-map',
   devServer: {
@@ -23,8 +24,22 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true }
+          }
+        ]
       }
     ]
-  }
-
-}
+  },
+  plugins:[
+    new HtmlWebPackPlugin({
+      template:'./index.html',
+      filename:'./index.html'
+    })
+  ]
+};

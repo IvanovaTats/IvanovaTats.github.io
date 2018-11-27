@@ -13,6 +13,8 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/runtime": "^7.1.5",
     "babel-loader": "^8.0.4",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.11",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
@@ -20,7 +22,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack"    
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
