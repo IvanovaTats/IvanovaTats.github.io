@@ -1,16 +1,14 @@
 import {articlesUrl} from './configuration.js';
 import {LoadSources} from './apiClient.js';
 
-export default class Articles {
-
-  static async load(publisher){
+  const load =  async(publisher)=>{
     let url = `${articlesUrl}${publisher}`;
     let promise = await LoadSources(url);
     let articles = await promise.json();
-    this.show(articles);
+    show(articles);
   }
 
-  static show({ articles }) {
+   const show = ({ articles }) =>{
     const className = "articles";
     let el = document.getElementById(className);
     for (const art of articles) {
@@ -21,4 +19,5 @@ export default class Articles {
       el.innerHTML += str;
     };
   }
-}
+
+  export {load};

@@ -1,5 +1,4 @@
-import Publishers from './publishers.js';
-import _ from 'lodash';
+import {load} from './publishers.js';
 import './../styles/index.css'
 
-document.addEventListener('DOMContentLoaded', Publishers.load(), false);
+document.addEventListener('DOMContentLoaded', load(), false);
