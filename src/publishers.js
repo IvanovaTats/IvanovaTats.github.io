@@ -1,6 +1,6 @@
 import { publishersUrl } from './configuration.js'
 import { LoadSources } from './apiClient.js';
-import Articles from './articles.js'
+//import Articles from './articles.js'
 
 export default class Publishers {
 
@@ -27,7 +27,11 @@ export default class Publishers {
     for (const [index, value] of Object.entries(sources)) {
       value.addEventListener("click", () => {
         document.getElementById("articles").innerHTML = '';
-        Articles.load(value.id)
+        import(/* webpackChunkName: "articles" */
+        /* webpackMode: "lazy" */'./articles').then(module => {
+            var articles = Articles.load(value.id);
+          })
+
       }, false);
     };
   }
