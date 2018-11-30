@@ -7,19 +7,34 @@
 }
 
 .menu {
-    float: left;
     padding-top: 10px;
-    width:100%
 }
 
+.main {
+    display: flex;
+    
+}
 .left {
-  width: 25%;
+  flex-basis: 25%;
 }
 
 .right {
-  width: 75%;
+  flex-basis: 75%;
+}
+
+#articles{
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 
 .articles{
-    display: block;
+    outline: 1px solid #999999;
+    flex-basis: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 992px){
+    .left{display: none}
 }
