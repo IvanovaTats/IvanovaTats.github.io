@@ -1,6 +1,6 @@
 import {apiKey} from './configuration.js';
 
-export async function LoadSources(url) {
+const loadSources = async (url) => {
   let response = fetch(url, {
      headers: {
        'X-Api-Key': apiKey
@@ -8,3 +8,4 @@ export async function LoadSources(url) {
    });
    return response;
  };
+export {loadSources}

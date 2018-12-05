@@ -1,11 +1,10 @@
-import { publishersUrl } from './configuration.js'
-import { LoadSources } from './apiClient.js';
+import { getPromise } from './loadFactory';
 
 const get = async () => {
   try {
-    let promise = await LoadSources(publishersUrl);
-    let publishers = await promise.json();
-    debugger;
+    let promise = await getPromise('publisher');
+    let publishers = promise.json();
+    
     if (publishers.status === 'error') {
       throw publishers;
     }
@@ -14,9 +13,8 @@ const get = async () => {
   catch (e) {
     let err = await import(/* webpackChunkName: "errHandler" */
       /* webpackMode: "lazy" */'./errorHandler');
-    //testErr.default.message = 'test';
-    err.default.raiseAlert('Error');
-    publishers = [];
+    err.default.raiseAlert('failed to load publishers');
+    let publishers = [];
   }
 }
 
