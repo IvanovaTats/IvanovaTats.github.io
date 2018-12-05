@@ -1,4 +1,4 @@
-import {load} from './publishers.js';
+import {load, loadPublishers} from './presenter/viewPresenter';
 import './../styles/index.scss'
 
-document.addEventListener('DOMContentLoaded', load(), false);
+document.addEventListener('DOMContentLoaded', loadPublishers(), false);

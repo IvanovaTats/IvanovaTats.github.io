@@ -1,13 +1,4 @@
-import { publishersUrl } from './configuration.js'
-import { LoadSources } from './apiClient.js';
-
-
-const load = async () => {
-  let promise = await LoadSources(publishersUrl);
-  let publishers = await promise.json();
-  let el = create(publishers);
-  addEvent(el);
-}
+import { loadArticles } from './../presenter/viewPresenter'
 
 const create = ({ sources }) => {
   const className = "publishers";
@@ -25,13 +16,9 @@ const addEvent = (el) => {
   for (const [index, value] of Object.entries(sources)) {
     value.addEventListener("click", () => {
       document.getElementById("articles").innerHTML = '';
-      import(/* webpackChunkName: "Articles" */
-        /* webpackMode: "lazy" */'./articles').then(Articles => {
-          var articles = Articles.load(value.id);
-        })
-
+      loadArticles(value.id);
     }, false);
   };
 }
 
-export {load};
+export { create, addEvent }
