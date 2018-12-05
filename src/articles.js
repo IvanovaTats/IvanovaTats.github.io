@@ -1,8 +1,8 @@
-import { getPromise } from './loadFactory';
+import { urlProxy } from './urlProxy';
 
 const get = async (publisher) => {
   try {
-    let promise = await getPromise('article', publisher);
+    let promise = await urlProxy('article', publisher);
     let articles = promise.json();
     
     if (articles.status === 'error') {
