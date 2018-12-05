@@ -1,10 +1,27 @@
 import { publishersUrl } from './configuration.js'
 import { LoadSources } from './apiClient.js';
 
+const get = async () => {
+  try {
+    let promise = await LoadSources(publishersUrl);
+    let publishers = await promise.json();
+    debugger;
+    if (publishers.status === 'error') {
+      throw publishers;
+    }
+    return publishers;
+  }
+  catch (e) {
+    let err = await import(/* webpackChunkName: "errHandler" */
+      /* webpackMode: "lazy" */'./errorHandler');
+    //testErr.default.message = 'test';
+    err.default.raiseAlert('Error');
+    publishers = [];
+  }
+}
 
-const load = async () => {
-  let promise = await LoadSources(publishersUrl);
-  let publishers = await promise.json();
+const load = async() => {
+  let publishers = await get();
   let el = create(publishers);
   addEvent(el);
 }
@@ -24,14 +41,14 @@ const addEvent = (el) => {
   let sources = el.getElementsByClassName(className);
   for (const [index, value] of Object.entries(sources)) {
     value.addEventListener("click", () => {
+
       document.getElementById("articles").innerHTML = '';
       import(/* webpackChunkName: "Articles" */
         /* webpackMode: "lazy" */'./articles').then(Articles => {
           var articles = Articles.load(value.id);
         })
-
     }, false);
   };
 }
 
-export {load};
+export { load };
