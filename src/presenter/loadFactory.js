@@ -1,6 +1,5 @@
-import { publishersUrl } from './configuration.js';
-import { articlesUrl } from './configuration.js';
-import { loadSources } from './apiClient.js';
+import { publishersUrl, articlesUrl } from '../configuration';
+import { loadSources } from '../model/apiClient';
 
 const getPromise = async (type, ...rest) => {
   if (type == 'publisher') {

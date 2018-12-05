@@ -1,4 +1,4 @@
-import {apiKey} from './configuration.js';
+import {apiKey} from './../configuration';
 
 const loadSources = async (url) => {
   let response = fetch(url, {
