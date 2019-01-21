@@ -1,4 +1,4 @@
-import { loadArticles } from './../presenter/viewPresenter'
+import { loadArticles } from './../articles/articleController.js'
 
 const create = ({ sources }) => {
   const className = "publishers";
