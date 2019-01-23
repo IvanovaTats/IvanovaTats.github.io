@@ -1,0 +1,34 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "author": "https://www.washingtonexaminer.com/author/tiana-lowe",
+            "title": "The Left decides Kamala Harris is a cop — but she's running anyways - Washington Examiner",
+            "description": "With nearly two years to go, almost anything in the realm of the 2020 presidential election could change from now until Election Day. The one thing that won't, however, is math.",
+            "url": "https://www.washingtonexaminer.com/opinion/the-left-decides-kamala-harris-is-a-cop-but-shes-running-anyways",
+            "urlToImage": "https://mediadc.brightspotcdn.com/dims4/default/f2f363f/2147483647/strip/true/crop/2290x1202+0+24/resize/1200x630!/quality/90/?url=https%3A%2F%2Fmediadc.brightspotcdn.com%2F43%2Ffd%2Fb6757e089aede5a45d9802cbd7e3%2Fddbc6e5dddc607ddee2ceb172485638f.jpg",
+            "publishedAt": "2019-01-21T13:44:00Z",
+            "content": "W ith nearly two years to go, almost anything in the realm of the 2020 presidential election could change from now until Election Day. The one thing that won't, however, is math. Any Democrat seeking to unseat President Trump will have to achieve at least one… [+3824 chars]"
+        },
+        {
+            "id": 2,
+            "author": "Silvia Amaro",
+            "title": "IMF cuts growth forecasts for 2019 and 2020 - CNBC",
+            "description": "The International Monetary Fund (IMF) revised down its estimates for global growth on Monday, warning that the expansion seen in recent years is losing momentum.",
+            "url": "https://www.cnbc.com/2019/01/21/imf--cuts-global-growth-outlook-2019-2020.html",
+            "urlToImage": "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2019/01/17/105685178-1547754700700gettyimages-1094290088.1910x1000.jpeg",
+            "publishedAt": "2019-01-21T13:00:28Z",
+            "content": "The International Monetary Fund (IMF) revised down its estimates for global growth on Monday, warning that the expansion seen in recent years is losing momentum. div &gt; div.group &gt; p:first-child\"&gt; The Fund now projects a 3.5 percent growth rate worldw… [+1343 chars]"
+        },
+        {
+            "id": 3,
+            "author": "ET Online",
+            "title": "Rob Kardashian's ex Blac Chyna and new flame Alexis Skyy share heated words - Fox News",
+            "description": "It looks like Rob Kardashian’s reported romance with Alexis Skyy is doing just fine!",
+            "url": "https://www.foxnews.com/entertainment/rob-kardashians-ex-blac-chyna-and-new-flame-alexis-skyy-share-heated-words",
+            "urlToImage": "https://static.foxnews.com/foxnews.com/content/uploads/2018/09/Rob-Chyna.jpg",
+            "publishedAt": "2019-01-21T12:55:55Z",
+            "content": "It looks like Rob Kardashian’s reported romance with Alexis Skyy is doing just fine! On Saturday, his ex Black Chyna’s rapper boyfriend Kid Buu commented on one of the reality star’s Instagram photos, writing, “You really [with] Rob’s fat a** for love or is i… [+1591 chars]"
+        }
+    ]
+}
