@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const fs = require('fs');
-const file = './data/articles.json';
+const file = './server/data/articles.json';
 
 router.get('/', (req, res, next) => {
   fs.readFile(file, function read(err, content) {
