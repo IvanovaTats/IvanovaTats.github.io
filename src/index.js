@@ -1,4 +1,4 @@
-import {load, loadPublishers} from './publishers/publisherController.js';
-import './../styles/index.scss'
+import { loadPublishers } from './publishers/publisherController';
+import './styles/index.scss';
 
 document.addEventListener('DOMContentLoaded', loadPublishers(), false);
