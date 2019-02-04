@@ -13,3 +13,11 @@ exports.create = function (req, res) {
   });
   publisher.save();
 };
+
+exports.select = (req, res) => {
+  Publisher.find((err, publishers) => {
+    if (err) {
+      console.log(err);
+    } else res.json(publishers);
+  });
+};

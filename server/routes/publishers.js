@@ -4,7 +4,7 @@ const publisherController = require('../controllers/publisher.controller');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('insert');
+  publisherController.select(req, res);
 });
 
 router.get('/:id', (req, res) => {
