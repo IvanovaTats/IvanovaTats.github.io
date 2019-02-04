@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const publisherSchema = new mongoose.Schema({
-  id: String,
+  publisherid: String,
   name: String,
   description: String,
   url: String,

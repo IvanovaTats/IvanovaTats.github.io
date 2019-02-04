@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  res.send('get by id');
+  publisherController.selectById(req, res);
 });
 
 router.post('/', (req, res) => {

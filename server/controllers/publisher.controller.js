@@ -3,7 +3,7 @@ const Publisher = require('../models/publisher.model');
 // eslint-disable-next-line func-names
 exports.create = function (req, res) {
   const publisher = new Publisher({
-    id: req.body.id,
+    publisherid: req.body.id,
     name: req.body.name,
     description: req.body.description,
     url: req.body.url,
@@ -19,5 +19,13 @@ exports.select = (req, res) => {
     if (err) {
       console.log(err);
     } else res.json(publishers);
+  });
+};
+
+exports.selectById = (req, res) => {
+  Publisher.findById(req.params.id, (err, publisher) => {
+    if (err) {
+      console.log(err);
+    } else res.json(publisher);
   });
 };
