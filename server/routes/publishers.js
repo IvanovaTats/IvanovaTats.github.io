@@ -16,8 +16,8 @@ router.post('/', (req, res) => {
   res.send();
 });
 
-router.put('/', (req, res) => {
-  res.send('put');
+router.put('/:id', (req, res) => {
+  publisherController.update(req, res);
 });
 
 router.delete('/', (req, res) => {
