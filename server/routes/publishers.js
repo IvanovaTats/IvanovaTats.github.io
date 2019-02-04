@@ -13,15 +13,14 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   publisherController.create(req, res);
-  res.send();
 });
 
 router.put('/:id', (req, res) => {
   publisherController.update(req, res);
 });
 
-router.delete('/', (req, res) => {
-  res.send('delete');
+router.delete('/:id', (req, res) => {
+  publisherController.deleteById(req, res);
 });
 
 module.exports = router;
