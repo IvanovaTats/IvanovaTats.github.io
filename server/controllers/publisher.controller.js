@@ -1,6 +1,8 @@
+const mongoose = require('mongoose');
 const Publisher = require('../models/publisher.model');
 
-// eslint-disable-next-line func-names
+mongoose.connect('mongodb://localhost:27017/newsAPI', { useNewUrlParser: true });
+
 exports.create = (req, res) => {
   const publisher = new Publisher(req.body);
   publisher.save((err) => {

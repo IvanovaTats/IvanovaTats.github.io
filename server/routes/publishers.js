@@ -1,26 +1,28 @@
 const express = require('express');
 const publisherController = require('../controllers/publisher.controller');
 
-const router = express.Router();
+const publisherRouter = express.Router();
 
-router.get('/', (req, res) => {
-  publisherController.select(req, res);
-});
+function router() {
+  publisherRouter.route('/')
+    .get((req, res) => {
+      publisherController.select(req, res);
+    })
+    .post((req, res) => {
+      publisherController.create(req, res);
+    });
 
-router.get('/:id', (req, res) => {
-  publisherController.selectById(req, res);
-});
-
-router.post('/', (req, res) => {
-  publisherController.create(req, res);
-});
-
-router.put('/:id', (req, res) => {
-  publisherController.update(req, res);
-});
-
-router.delete('/:id', (req, res) => {
-  publisherController.deleteById(req, res);
-});
+  publisherRouter.route('/:id')
+    .get((req, res) => {
+      publisherController.selectById(req, res);
+    })
+    .put((req, res) => {
+      publisherController.deleteById(req, res);
+    })
+    .delete((req, res) => {
+      publisherController.deleteById(req, res);
+    });
+  return publisherRouter;
+}
 
 module.exports = router;

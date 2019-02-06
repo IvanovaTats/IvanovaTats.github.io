@@ -4,6 +4,9 @@ module.exports = {
       "browser": true,
       "node": true
     },
+    "rules":{
+      "comma-dangle":0
+    },
     "parser": 'babel-eslint',
     "parserOptions": {
       "sourceType": 'module',
