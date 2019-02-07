@@ -1,17 +1,17 @@
 import { loadPublishers } from './publishers/publisherController';
+import { userAuthenticate } from './authentication/authCoontroller';
 import './styles/index.scss';
 
-function validate() {
-  alert('never give up');
-}
 
-document.getElementById('submitForm').onsubmit = validate();
+document.getElementById('submitForm').onsubmit = (function() {
+  return function(evt) {
+    evt.preventDefault();
+    console.log('onsubmit');
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    userAuthenticate(username, password);
+  };
+})();
 
-//document.addEventListener('DOMContentLoaded', loadPublishers(), false);
-//document.addEventListener('submit', validate(), false);
 
-
-// function init(){
-//   document.getElementById('form').onsubmit = validate;
-// }
-// window.onload = init;
+document.addEventListener('DOMContentLoaded', loadPublishers(), false);

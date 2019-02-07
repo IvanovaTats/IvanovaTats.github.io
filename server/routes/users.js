@@ -8,6 +8,9 @@ function router() {
     .post((req, res) => {
       userController.login(req, res);
     });
+    // .post((req, res) => {
+    //   userController.findOne(req, res);
+    // });
   userRouter.route('/register')
     .post((req, res) => {
       userController.register(req, res);

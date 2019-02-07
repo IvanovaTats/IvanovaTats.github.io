@@ -17,12 +17,10 @@ exports.register = (req, res) => {
 };
 
 exports.login = (req, res) => {
-  passport.authenticate('local', { session: false }, (err, user, info) => {
+  //const user = req.body;
+  passport.authenticate('local', { session: false }, (err, user) => {
     if (err || !user) {
-      return res.status(400).json({
-        message: 'Something is not right',
-        user: user
-      });
+      return res.status(400);
     }
     req.login(user, { session: false }, (err) => {
       if (err) {
@@ -34,3 +32,16 @@ exports.login = (req, res) => {
     });
   })(req, res);
 };
+
+// exports.findOne = (req, res) => {
+//   User.findOne({ username: req.body.username, password: req.body.password }, (err, user) => {
+//     if (err) {
+//       return res.status(500).send(err);
+//     }
+//     return res.json(user);
+//   });
+// };
+
+// exports. = (req, res) => {
+ 
+// };
