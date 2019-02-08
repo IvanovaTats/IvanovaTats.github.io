@@ -15,9 +15,7 @@ exports.register = (req, res) => {
     return res.json('registered');
   });
 };
-
 exports.login = (req, res) => {
-  //const user = req.body;
   passport.authenticate('local', { session: false }, (err, user) => {
     if (err || !user) {
       return res.status(400);
@@ -27,21 +25,8 @@ exports.login = (req, res) => {
         res.send(err);
       }
 
-      const token = jwt.sign(user, 'your_jwt_secret');
+      const token = jwt.sign({ username: user.username, password: user.password }, 'jwt_secret');
       return res.json({ user, token });
     });
   })(req, res);
 };
-
-// exports.findOne = (req, res) => {
-//   User.findOne({ username: req.body.username, password: req.body.password }, (err, user) => {
-//     if (err) {
-//       return res.status(500).send(err);
-//     }
-//     return res.json(user);
-//   });
-// };
-
-// exports. = (req, res) => {
- 
-// };

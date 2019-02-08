@@ -5,15 +5,14 @@ const User = require('../models/user.model');
 
 passport.use(new LocalStrategy(
   (username, password, done) => {
-    User.findOne({ username: req.username, password: req.password },
+    User.findOne({ username, password },
       (err, user) => {
         if (err) { return done(err); }
+
         if (!user) {
           return done(null, false, { message: 'Incorrect user.' });
         }
-        if (!user.validPassword(password)) {
-          return done(null, false, { message: 'Incorrect password.' });
-        }
+
         return done(null, user);
       });
   }
