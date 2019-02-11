@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: '[name].[chunkhash].bundle.js',
     chunkFilename: '[name].[chunkhash].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, './dist'),
   },
   module: {
     rules: [
@@ -17,39 +17,39 @@ module.exports = {
         use: {
           loader: 'babel-loader?cacheDirectory=true',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
           },
           'css-loader',
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.html$/,
         use: [
           {
             loader: 'html-loader',
-            options: { minimize: true }
-          }
-        ]
-      }
-    ]
+            options: { minimize: true },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './index.html',
-      filename: './index.html'
+      template: './src/index.html',
+      filename: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
-  ]
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
 };

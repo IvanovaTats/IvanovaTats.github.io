@@ -1,11 +1,25 @@
-import {apiKey} from './../configuration';
+import { apiKey } from '../configuration';
 
 const loadSources = async (url) => {
-  let response = fetch(url, {
-     headers: {
-       'X-Api-Key': apiKey
-     }
-   });
-   return response;
- };
-export {loadSources}
+  const response = fetch(url, {
+    headers: {
+      //authorezation: 'Token' + 
+      'X-Api-Key': apiKey
+    },
+  });
+  return response;
+};
+
+const authenticate = async (url, data) => {
+  const promise = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: data,
+    method: 'POST'
+  });
+  return promise;
+};
+
+
+export { loadSources, authenticate };

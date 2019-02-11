@@ -6,11 +6,11 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
   optimization: {
-    splitChunks:{
-      chunks:'all'    
+    splitChunks: {
+      chunks: 'all',
     },
     minimizer: [new TerserPlugin({
-      cache: true
-    })]
-  }
+      cache: true,
+    })],
+  },
 });
